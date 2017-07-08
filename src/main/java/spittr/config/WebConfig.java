@@ -11,7 +11,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc//enable Spring MVC
-@ComponentScan("spitter.web")//enable component scanning
+@ComponentScan("spittr.web")//enable component scanning
 public class WebConfig extends WebMvcConfigurerAdapter{
 
 	//configure a JSP view resolver

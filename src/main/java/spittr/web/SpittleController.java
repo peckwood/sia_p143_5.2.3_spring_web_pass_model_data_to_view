@@ -25,10 +25,12 @@ public class SpittleController {
 	public String spittles(Model model){
 		//add spittles to model
 		/*When addAttribute() is called without specifying a key, the key is inferred from the type of 
-		 * object being set as the value. In this case, because it¡¯s a List<Spittle>, the key will be 
+		 * object being set as the value. In this case, because itï¿½ï¿½s a List<Spittle>, the key will be 
 		 * inferred as spittleList
 		 * */
-		model.addAttribute(spittleRepository.findSpittles(Long.MAX_VALUE, 20));
+		List<Spittle> spittles = spittleRepository.findSpittles(Long.MAX_VALUE, 20);
+		System.out.println("spittles: "+ spittles);
+		model.addAttribute("spittleList", spittles);
 		//return view name
 		return "spittles";
 	}
@@ -36,7 +38,9 @@ public class SpittleController {
 	//same as spittles
 	@RequestMapping(method = RequestMethod.GET, value="/v1")
 	public String spittles1(Model model){
-		model.addAttribute("spittleList", spittleRepository.findSpittles(Long.MAX_VALUE, 20));
+		List<Spittle> spittles = spittleRepository.findSpittles(Long.MAX_VALUE, 20);
+		System.out.println("spittles: "+ spittles);
+		model.addAttribute(spittles);
 		//return view name
 		return "spittles";
 	}
@@ -47,7 +51,7 @@ public class SpittleController {
 	 * 	handler method returns an object or a collection like this, the value returned is put
 	 * 	into the model, and the model key is inferred from its type (spittleList, as in the
 	 * 	other examples).
-	 * 	As for the logical view name, it¡¯s inferred from the request path. Because this
+	 * 	As for the logical view name, itï¿½ï¿½s inferred from the request path. Because this
 	 * 	method handles GET requests for /spittles, the view name is spittle/v2 (chopping off
 	 * 	the leading slash)
 	 */
